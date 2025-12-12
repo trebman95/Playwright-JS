@@ -9,7 +9,7 @@ console.log("Codecademy".toUpperCase());
 console.log(Math.floor(Math.random() * 100));
 console.log(Number.isInteger(2017));
 
-//Variables(var, let, const)
+//Variables(var, let, const), Math Assignment Operators String Interpolation, typeof, etc.
 var numOfSlices = 8;
 var favoriteFood = 'pizza';
 console.log(favoriteFood);
