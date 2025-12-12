@@ -9,6 +9,7 @@ console.log("Codecademy".toUpperCase());
 console.log(Math.floor(Math.random() * 100));
 console.log(Number.isInteger(2017));
 
+
 //Variables(var, let, const), Math Assignment Operators String Interpolation, typeof, etc.
 var numOfSlices = 8;
 var favoriteFood = 'pizza';
@@ -38,3 +39,19 @@ console.log("The value of levelUp:", levelUp);
 console.log("The value of powerLevel:", powerLevel);
 console.log("The value of multiplyMe:", multiplyMe);
 console.log("The value of quarterMe:", quarterMe);
+
+let gainedDollar = 5;
+gainedDollar++; // OR gainedDollar--
+console.log(gainedDollar);
+
+let favoriteAnimal = "Pablo";
+console.log("My favorite animal: " + favoriteAnimal);
+
+const myName = 'Tre';
+const myCity = 'Chicago';
+console.log(`My name is ${myName}. My favorite city is ${myCity}`); // Interpolation
+
+let newVariable = 'Playing around with typeof.';
+console.log(typeof newVariable);
+newVariable = 1;
+console.log(typeof newVariable);
