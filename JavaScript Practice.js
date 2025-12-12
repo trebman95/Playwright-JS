@@ -8,3 +8,5 @@ console.log('Teaching the world how to code'.length);
 console.log("Codecademy".toUpperCase());
 console.log(Math.floor(Math.random() * 100));
 console.log(Number.isInteger(2017));
+
+//
