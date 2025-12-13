@@ -1,7 +1,7 @@
-// My Age
+// What is my age?
 let myAge = 30;
 myAge = 35;
-//This value will change for early years
+//Calcuate for early years after 2 years, this value will change
 let earlyYears = 2;
 earlyYears *= 10.5;
 // Calculate for later years after early years
