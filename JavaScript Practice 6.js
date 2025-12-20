@@ -11,7 +11,7 @@ console.log(logCitySkyline());
 
 
 
-const satellite = "The Moon"; // Global Scope
+const satellite = "The Moon"; // Global Scope & Global variables
 const galaxy = "The Milky Way";
 const stars = "North Star";
 
@@ -24,7 +24,7 @@ console.log(callMyNightSky());
 
 
 const logVisibleLightWaves = () => {   // Block Scope
-    const lightWaves = 'Moonlight'
+    const lightWaves = 'Moonlight' // Local variables -genearlly inside of the scope
     console.log(lightWaves)
 }
 
