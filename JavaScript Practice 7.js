@@ -60,3 +60,18 @@ groceryNote.unshift('popcorn')      // adds an item to the beginning of an array
 console.log(groceryNote.slice(1, 4))      // prints specific items
 console.log(groceryNote)
 console.log(pastaIndex)
+
+
+
+const concept = ['arrays', 'can', 'be', 'mutated'];    // Arrays with functions
+
+function changeArr(arr) {
+    arr[3] = 'MUTATED';
+}
+
+changeArr(concept);
+console.log(concept)
+
+const removeElement = (newArr) => newArr.pop()
+removeElement(concept)
+console.log(concept)
