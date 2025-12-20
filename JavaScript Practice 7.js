@@ -75,3 +75,11 @@ console.log(concept)
 const removeElement = (newArr) => newArr.pop()
 removeElement(concept)
 console.log(concept)
+
+
+
+const numberClusters = [[1, 2], [3, 4], [5, 6],    // Nested Arrays
+];
+
+const target = numberClusters[2][1]
+console.log(target)
