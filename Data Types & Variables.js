@@ -8,6 +8,18 @@ console.log('Teaching the world how to code'.length);
 console.log("Codecademy".toUpperCase());
 console.log(Math.floor(Math.random() * 100));
 console.log(Number.isInteger(2017));
+console.log('Tre');
+console.log(1995);
+console.log(true);
+console.log('How long'.length)
+console.log('Break-ups ' + 'suck!');
+console.log('billy'.toUpperCase());
+console.log('Philly'.toLowerCase());
+console.log(Number.isInteger(24.59));
+console.log(Math.sqrt(121));
+const person = 'Jenny';
+console.log(`It's just me, ${person}!`);
+
 
 
 //Variables(var, let, const), Math Assignment Operators String Interpolation, typeof, etc.
