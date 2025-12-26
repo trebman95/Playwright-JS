@@ -71,3 +71,16 @@ for (let i = 0; i < rapperArray.length; i++) {
 }
 
 console.log("And if you don't know, now you know.")
+
+
+
+let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+let newArr = []
+
+for (i = 0; i < groceryList.length; i++) {
+    if (groceryList[i] === 'orange juice' || groceryList[i] === 'brown rice') {
+        newArr.push(groceryList[i])
+    }
+}
+
+console.log(newArr)
