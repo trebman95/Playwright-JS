@@ -4,6 +4,13 @@ for (let i = 5; i < 11; i++) {                                           // For 
     console.log(i)
 }
 
+for (i = 10; i < 20; i++) {
+    console.log(i)
+}
+
+for (j = 1; j < 14; j++) {
+    console.log(j)
+}
 
 
 
@@ -11,12 +18,23 @@ for (let counter = 3; counter >= 0; counter--) {                       // Revers
     console.log(counter)
 }
 
+for (let reverse = 10; reverse >= 4; reverse--) {
+    console.log(reverse)
+}
 
 
-const vacationSpots = ['Bali', 'Paris', 'Tulum'];
 
-for (let i = 0; i < vacationSpots.length; i++) {                          // Iterating through an Array
+const vacationSpots = ['Bali', 'Paris', 'Tulum'];                       // Iterating through an Array
+
+for (let i = 0; i < vacationSpots.length; i++) {
     console.log(`I would love to visit ${vacationSpots[i]}`)
+}
+
+
+const jackson5 = ['Tito', 'Michael', 'Jermaine', 'Jackie', 'Marlon'];
+
+for (i = 0; i < jackson5.length; i++) {
+    console.log(jackson5[i])
 }
 
 
@@ -34,7 +52,23 @@ for (let i = 0; i < bobsFollowers.length; i++) {
     }
 }
 
-console.log(mutualFollowers)
+console.log(mutualFollowers);
+
+
+
+let priority1 = ["eggs", "milk", "soap", "lettuce"];
+let priority2 = ["tissue", "soap", "toothpaste"];
+let newPrio = [];
+
+for (let p1 = 0; p1 < priority1.length; p1++) {
+    for (let p2 = 0; p2 < priority2.length; p2++) {
+        if (priority1[p1] === priority2[p2]) {
+            newPrio.push(priority1[p1])
+        }
+    }
+}
+
+console.log(newPrio);
 
 
 
