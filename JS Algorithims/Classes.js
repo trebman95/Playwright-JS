@@ -90,6 +90,10 @@ class HospitalEmployee {   // Inheritance - Parent Class
     takeVacationDays(daysOff) {
         this._remainingVacationDays -= daysOff;
     }
+
+    static generatePassword() {       // static method
+        return Math.floor(Math.random() * (10000 - 0) + 0)
+    }
 }
 
 class Practitioner extends HospitalEmployee {
