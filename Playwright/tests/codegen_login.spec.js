@@ -32,6 +32,7 @@ test('Negative Password', async ({ page }) => {
     await page.pause()
 })
 
+// Remember 'npx playwright codegen URL' to find the code of the locators visually
 // Run 'npx playwright codegen_login.spec.js' for the full test
 // Use '--headed' to run the visual browsers
 // Use 'test.only' to run a specific test
