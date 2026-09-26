@@ -4,8 +4,22 @@ test('NoSuchElementException', async({page}) => {
     await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
     await page.getByRole('button', {name: 'Add'}).click();
     
-    const row2Input = page.locator('id=row2');
+    const row2Input = page.locator('div#row2 input[type="text"]');
     expect(row2Input).toBeVisible;
-
 })
+
+test('ElementNotInteractableException', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
+    await page.locator('#add_btn').click({ timeout: 5000 });
+
+    const row2Input = page.locator('div#row2 input[type="text"]');
+    await row2Input.waitFor({state: 'visible', timeout: 10000})
+
+    await row2Input.fill('tacos');
+    
+    await page.locator('#row2').getByRole('button',{name: 'Save'}).click({ timeout: 5000 });
+
+    const confirmText = page.locator('#confirmation');
+    expect(confirmText).toHaveText('Row 2 was saved')
+});
 
