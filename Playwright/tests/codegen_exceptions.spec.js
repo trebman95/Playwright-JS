@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-test('holder', async({page}) => {
+test('NoSuchElementException', async({page}) => {
     await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
     await page.getByRole('button', {name: 'Add'}).click();
     
