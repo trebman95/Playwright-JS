@@ -23,3 +23,15 @@ test('ElementNotInteractableException', async({page}) => {
     expect(confirmText).toHaveText('Row 2 was saved')
 });
 
+test('InvalidElementStateException', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
+    await page.locator('#edit_btn').click();
+    const inputField = page.locator('#row1').getByRole('textbox');
+    await inputField.clear();
+
+    await inputField.fill('Jamal')
+
+
+    expect(inputField).toHaveValue('Jamal')
+})
+
