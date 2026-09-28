@@ -44,6 +44,13 @@ test('StaleElementReferenceException', async({page}) => {
      
     
     expect(instructions).not.toBeVisible();
+});
 
+test('TimeoutException', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
+    await page.locator('#add_btn').click();
+    
+    const row2Input = page.locator('#row2 input');
+    await expect(row2Input).toBeVisible({timeout: 10000});
 });
 
