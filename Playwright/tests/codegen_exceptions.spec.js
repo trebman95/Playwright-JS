@@ -6,7 +6,7 @@ test('NoSuchElementException', async({page}) => {
     
     const row2Input = page.locator('div#row2 input[type="text"]');
     expect(row2Input).toBeVisible;
-})
+});
 
 test('ElementNotInteractableException', async({page}) => {
     await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
@@ -33,5 +33,17 @@ test('InvalidElementStateException', async({page}) => {
 
 
     expect(inputField).toHaveValue('Jamal')
-})
+});
+
+test('StaleElementReferenceException', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-exceptions/');
+    const instructions = page.locator('#instructions')
+    await expect(instructions).toBeVisible();
+
+    await page.getByRole('button', {name: 'Add'}).click()
+     
+    
+    expect(instructions).not.toBeVisible();
+
+});
 
