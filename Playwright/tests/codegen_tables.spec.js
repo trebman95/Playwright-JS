@@ -64,6 +64,7 @@ test('Combined Filters', async({page}) => {
     await expect(beginner).toBeChecked();
     await expect(minEnrollments).toHaveAttribute('data-value', '10000');
 
+    
     const visibleRows = page.locator('tbody tr:visible');
     await expect(visibleRows).not.toHaveCount(0);
     const visibleCourses = await visibleRows.evaluateAll(rows => rows.map(row => ({
@@ -77,4 +78,5 @@ test('Combined Filters', async({page}) => {
         expect(course.level).toBe('Beginner');
         expect(course.enrollments).toBeGreaterThanOrEqual(10000);
     }
+
 });
