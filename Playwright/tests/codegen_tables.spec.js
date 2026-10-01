@@ -41,3 +41,40 @@ test('Min Enrollments', async({page}) => {
 
     await expect(minEnrollments).toHaveAttribute('data-value', '10000');
 });
+
+test('Combined Filters', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-table/');
+
+    const python = page.getByRole('radio', {name: 'Python'});
+    await python.check();
+
+    const intermediate = page.getByRole('checkbox', {name: 'Intermediate'});
+    const advanced = page.getByRole('checkbox', {name: 'Advanced'});
+    const beginner = page.getByRole('checkbox', {name: 'Beginner'});
+    await intermediate.uncheck();
+    await advanced.uncheck();
+
+    const minEnrollments = page.getByRole('listbox', {name: 'Minimum enrollments'});
+    await minEnrollments.getByRole('button').click();
+    await minEnrollments.getByRole('option', {name: '10,000+'}).click();
+
+    await expect(python).toBeChecked();
+    await expect(intermediate).not.toBeChecked();
+    await expect(advanced).not.toBeChecked();
+    await expect(beginner).toBeChecked();
+    await expect(minEnrollments).toHaveAttribute('data-value', '10000');
+
+    const visibleRows = page.locator('tbody tr:visible');
+    await expect(visibleRows).not.toHaveCount(0);
+    const visibleCourses = await visibleRows.evaluateAll(rows => rows.map(row => ({
+        language: row.querySelector('[data-col="language"]')?.textContent.trim(),
+        level: row.querySelector('[data-col="level"]')?.textContent.trim(),
+        enrollments: Number(row.querySelector('[data-col="enrollments"]')?.textContent.replaceAll(',', '')),
+    })));
+
+    for (const course of visibleCourses) {
+        expect(course.language).toBe('Python');
+        expect(course.level).toBe('Beginner');
+        expect(course.enrollments).toBeGreaterThanOrEqual(10000);
+    }
+});
