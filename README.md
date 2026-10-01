@@ -85,7 +85,6 @@ Tests run on every push and pull request to `main`/`master`. The workflow instal
 | Folder / File | What it is |
 |---|---|
 | `Playwright/` | Automated end-to-end tests, config, and CI setup (see above) |
-| `Temu Test Cases.xlsx` | Manual test cases I wrote for [Temu: scope, e.g. login, search, cart, checkout] |
 | `JS Algorithims/` | JavaScript fundamentals: variables, functions, arrays, objects, classes, iterators, async programming, and more |
 | `JS Practice/` | Three practice projects applying JavaScript concepts |
 | `HTML+CSS/` | Basic HTML and CSS practice page |
