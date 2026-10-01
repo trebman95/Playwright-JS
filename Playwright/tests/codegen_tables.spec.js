@@ -96,4 +96,26 @@ test('No Matching Courses', async({page}) => {
     await expect(noMatchesMessage).toBeVisible();
 });
 
+test('Reset Filters', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-table/');
+
+    const resetButton = page.getByRole('button', {name: 'Reset filters'});
+    const minEnrollments = page.getByRole('listbox', {name: 'Minimum enrollments'});
+    const allRows = page.locator('tbody tr');
+    const initialRowCount = await allRows.count();
+
+    await expect(resetButton).toBeHidden();
+    await page.getByRole('radio', {name: 'Python'}).check();
+    await expect(resetButton).toBeVisible();
+    await resetButton.click();
+
+    await expect(page.getByRole('radio', {name: 'Any'})).toBeChecked();
+    for (const level of ['Beginner', 'Intermediate', 'Advanced']) {
+        await expect(page.getByRole('checkbox', {name: level})).toBeChecked();
+    }
+    await expect(minEnrollments).toHaveAttribute('data-value', 'any');
+    await expect(resetButton).toBeHidden();
+    await expect(page.locator('tbody tr:visible')).toHaveCount(initialRowCount);
+});
+
 
