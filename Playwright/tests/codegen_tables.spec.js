@@ -118,4 +118,54 @@ test('Reset Filters', async({page}) => {
     await expect(page.locator('tbody tr:visible')).toHaveCount(initialRowCount);
 });
 
+test('Sort Enrollments', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-table/');
+    
+    const sortBy = page.locator('#sortBy');
+    await sortBy.selectOption({ label: 'Enrollments' });
 
+    const enrollmentCells = page.locator('tbody tr:visible td[data-col="enrollments"]');
+    const texts = await enrollmentCells.allTextContents();
+
+    const numbers = [];
+    for(const text of texts){
+        numbers.push(Number(text.replaceAll(',','')))
+    };
+
+    expect(numbers.length).toBeGreaterThan(0);
+
+    for(let i = 1; i < numbers.length; i++){
+        expect(numbers[i]).toBeGreaterThanOrEqual(numbers[i - 1]);
+    }
+});
+
+test('Sort Course Name', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-table/');
+    
+    const sortBy = page.locator('#sortBy');
+    await sortBy.selectOption({label : 'Course Name'});
+
+    const courseNameCells = page.locator('tbody tr:visible td[data-col="course"]');
+    const expectVisibleCoursesSorted = async() => {
+        const courseNames = (await courseNameCells.allTextContents()).map(name => name.trim());
+        expect(courseNames.length).toBeGreaterThan(0);
+
+        for (let i = 1; i < courseNames.length; i++) {
+            expect(courseNames[i].localeCompare(courseNames[i - 1])).toBeGreaterThanOrEqual(0);
+        }
+    };
+
+    await expectVisibleCoursesSorted();
+
+    await page.getByRole('radio', {name: 'Python'}).check();
+    await expectVisibleCoursesSorted();
+
+    await page.getByRole('checkbox', {name: 'Intermediate'}).uncheck();
+    await page.getByRole('checkbox', {name: 'Advanced'}).uncheck();
+    await expectVisibleCoursesSorted();
+
+    const minEnrollments = page.getByRole('listbox', {name: 'Minimum enrollments'});
+    await minEnrollments.getByRole('button').click();
+    await minEnrollments.getByRole('option', {name: '10,000+'}).click();
+    await expectVisibleCoursesSorted();
+});
