@@ -80,3 +80,20 @@ test('Combined Filters', async({page}) => {
     }
 
 });
+
+test('No Matching Courses', async({page}) => {
+    await page.goto('https://practicetestautomation.com/practice-test-table/');
+
+    const noMatchesMessage = page.getByText('No matching courses.', {exact: true});
+    await expect(noMatchesMessage).toBeHidden();
+
+    await page.getByRole('radio', {name: 'Python'}).check();
+    await page.getByRole('checkbox', {name: 'Beginner'}).uncheck();
+    await page.getByRole('checkbox', {name: 'Intermediate'}).uncheck();
+
+    await expect(page.getByRole('checkbox', {name: 'Advanced'})).toBeChecked();
+    await expect(page.locator('tbody tr:visible')).toHaveCount(0);
+    await expect(noMatchesMessage).toBeVisible();
+});
+
+
